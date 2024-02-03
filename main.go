@@ -10,10 +10,10 @@ import (
 )
 
 func main() {
-
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
+	if os.Getenv("GO_ENV") != "production" {
+		if err := godotenv.Load(); err != nil {
+			log.Fatal("Error loading .env file")
+		}
 	}
 
 	supabaseUrl := os.Getenv("SUPABASE_URL")
@@ -23,7 +23,7 @@ func main() {
 	supabaseClient := supabase.NewClient(supabaseUrl, supabaseKey)
 	myBot, err := bot.NewBot(botToken, supabaseClient)
 	if err != nil {
-		panic("failed to create bot: " + err.Error())
+		log.Fatalf("failed to create bot: %v", err)
 	}
 
 	myBot.Start()
