@@ -1,0 +1,25 @@
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Файлы среды выполнения
+.env
+.env.*
+
+# Папки и файлы Go
+/vendor/
+*.log
+*.log.*
+bin/
+pkg/
+*.out
+*.test
+
+# Файлы сборки
+/dist
+
+# Исключения для IDE и текстовых редакторов
+.idea/
+.vscode/
+*.swp
+*.swo
