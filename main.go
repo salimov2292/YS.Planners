@@ -5,16 +5,10 @@ import (
 	"os"
 	"planners/bot"
 	"planners/supabase"
-
-	"github.com/joho/godotenv"
 )
 
 func main() {
-	if os.Getenv("GO_ENV") != "production" {
-		if err := godotenv.Load(); err != nil {
-			log.Fatal("Error loading .env file")
-		}
-	}
+	// Удалено использование godotenv
 
 	supabaseUrl := os.Getenv("SUPABASE_URL")
 	supabaseKey := os.Getenv("SUPABASE_KEY")
